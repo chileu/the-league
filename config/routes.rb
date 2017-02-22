@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :players
   root 'static_pages#index'
   namespace :captain do
-    resources :practices, only: [:new, :create, :show]
+    resources :practices, only: [:new, :create]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
