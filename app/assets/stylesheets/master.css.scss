@@ -3,9 +3,53 @@
 
 .hero {
   background: url('hero.jpg') no-repeat center center fixed;
-  height: 700px;
+  height: 630px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar {
+  margin: 0;
+}
+
+.navbar {
+  height:70px;
+  border-radius: 0;
+}
+
+.navbar li {
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-size: 35px;
+}
+
+// customized twitter bootstrap button
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
 }
