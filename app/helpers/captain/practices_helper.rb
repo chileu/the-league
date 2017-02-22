@@ -1,0 +1,2 @@
+module Captain::PracticesHelper
+end
