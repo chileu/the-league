@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :players
   root 'static_pages#index'
+  resources :practices, only: [:index, :show]
   namespace :captain do
     resources :practices, only: [:new, :create]
   end

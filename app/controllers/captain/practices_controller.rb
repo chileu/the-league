@@ -7,7 +7,7 @@ class Captain::PracticesController < ApplicationController
 
   def create
     @practice = current_player.practices.create(practice_params)
-    redirect_to root_path
+    redirect_to practices_path
   end
 
   private
