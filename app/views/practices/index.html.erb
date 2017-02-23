@@ -12,7 +12,7 @@
 <% @practices.each do |practice| %>
     <% if practice.date != nil && practice.time != nil && practice.cancelled != true %>
         <div class="booyah-box col-xs-6 col-xs-offset-3 text-center">
-          <%= practice.date.strftime("%A, %B %d") %>
+          <%= link_to practice.date.strftime("%A, %B %d"), practice_path(practice) %>
             <br />
             <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
             <br /><br />

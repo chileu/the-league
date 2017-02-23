@@ -5,7 +5,10 @@
   <br /><br />
   <h3>
     <% current_practice.signups.each do |signup| %>
-      <%= signup.player.email %>
+      <% if signup.player != nil %>
+        <%= signup.player.email %>
+      <% end %>
+      <br />
     <% end %>
   </h3>
 </div>
