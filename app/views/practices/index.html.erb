@@ -1,8 +1,10 @@
 <h1>Practice schedule</h1>
 <br />
 <% @practices.each do |practice| %>
-  <%= practice.date.strftime("%A, %B %d") %>
-  <br />
-  <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
-  <br /><br />
+  <% if practice.date != nil && practice.time != nil %>
+    <%= practice.date.strftime("%A, %B %d") %>
+    <br />
+    <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
+    <br /><br />
+  <% end %>
 <% end %>

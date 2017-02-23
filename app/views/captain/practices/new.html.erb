@@ -1,24 +1,25 @@
 <div class="col-xs-10 col-xs-offset-1">
+  <br />
   <h1>Add a new practice</h1>
-  <br /><br />
+  <br />
   <%= simple_form_for @practice, url: captain_practices_path do |f| %>
     <br />
     <%= f.label :date %>
-    <%= f.date_select :date, start_year: Date.today.year,
-                                 end_year: Date.today.year+1,
-                                 order: [:month, :day, :year] %>
+    <%= f.text_field :date %>
     <br /><br />
     <%= f.label :time %>
-    <%= f.time_select :time, {ampm: true} %>
+    <%= f.time_select :time, {minute_step: 15, ampm: true} %>
     <br /><br /><br />
     <%= f.submit "Add", class: "btn btn-primary btn-lg" %>
   <% end %>
 </div>
 
-<input type="text" id="datepicker" />
+<!-- <input type="text" id="datepicker" /> -->
 
 <script>
   $(function() {
-    $("#datepicker").datepicker()
+    $("#practice_date").datepicker({
+      dateFormat: "yy-mm-dd"
+    })
   });
 </script>
