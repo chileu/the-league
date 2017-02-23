@@ -16,7 +16,14 @@
             <br />
             <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
             <br /><br />
-            <%= link_to 'Signup', '#', class: "btn btn-warning btn-outline" %>
+
+            <% if current_player.signed_up?(practice) %>
+              <div>You are signed up!</div>
+              <%= link_to 'Cancel signup', '#', class: "btn btn-warning btn-outline" %>
+            <% else %>
+              <%= link_to 'Signup', '#', class: "btn btn-warning btn-outline" %>
+            <% end %>
+
             &nbsp;&nbsp;
             <% if current_player.captain == true %>
               <%= link_to 'Add signups', '#', class: "btn btn-success btn-outline" %>
