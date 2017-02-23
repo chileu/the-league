@@ -1,9 +1,13 @@
 <br /><br />
 <div class="col-xs-8 col-xs-offset-2 text-center">
   <h1>Practice schedule</h1>
+  <br />
+    <% if current_player.captain == true %>
+      <%= button_to 'Add a practice', '#', class: "btn btn-warning btn-outline" %>
+    <% end %>
   <br /><br />
 </div>
-<br />
+<br /><br />
 
 <% @practices.each do |practice| %>
     <% if practice.date != nil && practice.time != nil %>
