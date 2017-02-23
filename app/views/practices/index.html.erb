@@ -3,7 +3,7 @@
   <h1>Practice schedule</h1>
   <br />
     <% if current_player.captain == true %>
-      <%= button_to 'Add a practice', '#', class: "btn btn-warning btn-outline" %>
+      <%= link_to 'Add a practice', new_captain_practice_path, class: "btn btn-warning btn-outline" %>
     <% end %>
   <br /><br />
 </div>
@@ -15,8 +15,12 @@
           <%= practice.date.strftime("%A, %B %d") %>
             <br />
             <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
-            <br />
+            <br /><br />
             <%= link_to 'Signup', '#', class: "btn btn-warning btn-outline" %>
+            <% if current_player.captain == true %>
+              <%= link_to 'Add players', '#', class: "btn btn-success btn-outline" %>
+              <%= link_to 'Delete', '#', class: "btn btn-danger btn-outline" %>
+            <% end %>
         </div>
     <% end %>
 <% end %>
