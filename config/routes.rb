@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :practices, only: [:index, :show]
   namespace :captain do
-    resources :practices, only: [:new, :create]
+    resources :practices, only: [:new, :create] do
+      post 'cancel'
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -10,6 +10,13 @@ class Captain::PracticesController < ApplicationController
     redirect_to practices_path
   end
 
+  def cancel
+    @practice = Practice.find(params[:id])
+    @practice.cancelled = true
+    @practice.save
+    redirect_to practices_path
+  end
+
   private
 
   def practice_params
