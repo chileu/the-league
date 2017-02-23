@@ -13,6 +13,10 @@ class Captain::PracticesController < ApplicationController
   def cancel
     @practice = Practice.find(params[:id])
     @practice.cancelled = true
+    @practice.signups.each do |signup|
+      signup.cancelled = true
+      signup.save
+    end
     @practice.save
     redirect_to practices_path
   end
