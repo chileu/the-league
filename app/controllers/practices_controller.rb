@@ -6,6 +6,12 @@ class PracticesController < ApplicationController
   end
 
   def show
+    @practice = Practice.find(params[:id])
+  end
+
+  helper_method :current_practice
+  def current_practice
+    @current_practice = Practice.find(params[:id])
   end
 
 end

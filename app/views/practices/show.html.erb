@@ -1,0 +1,11 @@
+<br /><br />
+<div class="col-xs-10 col-xs-offset-1 text-center">
+  <h1>Who's going?</h1>
+  <h3><%=current_practice.date.strftime("%A, %B %d") %> practice @ <%=current_practice.time.strftime("%I %p").sub(/^[0:]*/,"")%></h3>
+  <br /><br />
+  <h3>
+    <% current_practice.signups.each do |signup| %>
+      <%= signup.player.email %>
+    <% end %>
+  </h3>
+</div>
