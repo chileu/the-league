@@ -3,7 +3,7 @@
   <h1>Practice schedule</h1>
   <br />
     <% if current_player.captain == true %>
-      <%= link_to 'Add a practice', new_captain_practice_path, class: "btn btn-warning btn-outline" %>
+      <%= link_to 'Add a practice', new_captain_practice_path, class: "btn btn-info btn-outline" %>
     <% end %>
   <br /><br />
 </div>
@@ -18,17 +18,17 @@
             <br /><br />
 
             <% if current_player.signed_up?(practice) %>
-              <div>You are signed up!</div>
-              <%= link_to 'Cancel signup', '#', class: "btn btn-warning btn-outline" %>
+              <div><b>You are signed up!</b></div>
+              <%= link_to 'Cancel my signup', '#', class: "btn btn-warning btn-outline" %>
             <% else %>
-              <%= link_to 'Signup', '#', class: "btn btn-warning btn-outline" %>
+              <%= link_to 'Signup', '#', class: "btn btn-info btn-outline" %>
             <% end %>
 
             &nbsp;&nbsp;
             <% if current_player.captain == true %>
-              <%= link_to 'Add signups', '#', class: "btn btn-success btn-outline" %>
+              <%= link_to 'Add player signups', '#', class: "btn btn-success btn-outline" %>
               &nbsp;&nbsp;
-              <%= link_to 'Delete', captain_practice_cancel_path(practice, id: practice.id), method: :post, class: "btn btn-danger btn-outline" %>
+              <%= link_to 'Delete practice', captain_practice_cancel_path(practice, id: practice.id), method: :post, class: "btn btn-danger btn-outline" %>
             <% end %>
         </div>
     <% end %>
