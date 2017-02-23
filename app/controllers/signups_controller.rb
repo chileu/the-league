@@ -7,6 +7,11 @@ class SignupsController < ApplicationController
   end
 
   def cancel
+    @signup = Signup.find(params[:id])
+    @signup.destroy
+    @signup.save
+    flash[:notice] = "You have cancelled your sign-up for practice on #{@signup.practice.date.strftime("%A, %B %d")}"
+    redirect_to practices_path
   end
 
   private

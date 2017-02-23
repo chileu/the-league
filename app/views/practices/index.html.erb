@@ -18,8 +18,9 @@
             <br /><br />
 
             <% if current_player.signed_up?(practice) %>
+              <% current_players_signup = practice.signups.find_by(player_id: current_player.id) %>
               <div><b>You are signed up!</b></div>
-              <%= link_to 'Cancel my signup', '#', class: "btn btn-warning btn-outline" %>
+              <%= link_to 'Cancel my signup', signup_cancel_path(current_players_signup, id: current_players_signup.id), method: :post, class: "btn btn-warning btn-outline" %>
             <% else %>
               <%= link_to 'Signup', practice_signups_path(practice), method: :post, class: "btn btn-info btn-outline" %>
             <% end %>
