@@ -4,11 +4,14 @@
   <h3><%=current_practice.date.strftime("%A, %B %d") %> practice @ <%=current_practice.time.strftime("%I %p").sub(/^[0:]*/,"")%></h3>
   <br /><br />
   <h3>
-    <% current_practice.signups.each do |signup| %>
-      <% if signup.player != nil %>
-        <%= signup.player.email %>
-      <% end %>
-      <br />
+    <% if current_practice.signups.count == 0 %>
+      <i>No one is signed up yet!</i>
     <% end %>
+      <% current_practice.signups.each do |signup| %>
+        <% if signup.player != nil %>
+          <%= signup.player.email %>
+        <% end %>
+        <br />
+      <% end %>
   </h3>
 </div>
