@@ -1,10 +1,13 @@
+<br /><br />
+<div class="booyah-box col-xs-8 col-xs-offset-2 text-center">
 <h1>Practice schedule</h1>
 <br />
 <% @practices.each do |practice| %>
-  <% if practice.date != nil && practice.time != nil %>
-    <%= practice.date.strftime("%A, %B %d") %>
-    <br />
-    <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
-    <br /><br />
-  <% end %>
+    <% if practice.date != nil && practice.time != nil %>
+      <%= practice.date.strftime("%A, %B %d") %>
+      <br />
+      <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
+      <br /><br />
+    <% end %>
 <% end %>
+</div>

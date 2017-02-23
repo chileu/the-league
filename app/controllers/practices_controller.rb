@@ -1,7 +1,7 @@
 class PracticesController < ApplicationController
 
   def index
-    @practices = Practice.all
+    @practices = Practice.order('date ASC')
   end
 
   def show
