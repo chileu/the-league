@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+players_on_roster = [
+  ["Andrew Giuliani"],
+  ["Dale Vallaincourt"]
+]
+
+players_on_roster.each do |player|
+  first_name = player[0].split.first
+  last_name = player[0].split.last
+  Player.create(first_name: last_name, last_name: last_name)
+end
