@@ -1,5 +1,11 @@
 class Captain::SignupsController < ApplicationController
 
+  # grab all players in database (populated from seed data)
+  def new
+    @players = Player.all
+    @practices = Practice.where(cancelled: false).order('date ASC')
+  end
+
   # allow captain to signup selected player
   def create
     player = Player.find(params[:id])

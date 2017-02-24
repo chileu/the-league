@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :captain do
     resources :practices, only: [:new, :create] do
+      resources :signups, only: [:new, :create]
       post 'cancel'
     end
     resources :signups, only: [:new, :create]
