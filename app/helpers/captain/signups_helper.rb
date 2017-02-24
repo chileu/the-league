@@ -1,0 +1,2 @@
+module Captain::SignupsHelper
+end

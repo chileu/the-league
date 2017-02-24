@@ -27,7 +27,7 @@
 
             &nbsp;&nbsp;
             <% if current_player.captain == true %>
-              <%= link_to 'Add player signups', '#', class: "btn btn-success btn-outline" %>
+              <%= link_to 'Add player signups', new_captain_signup_path, class: "btn btn-success btn-outline" %>
               &nbsp;&nbsp;
               <%= link_to 'Delete practice', captain_practice_cancel_path(practice, id: practice.id), method: :post, class: "btn btn-danger btn-outline" %>
             <% end %>
