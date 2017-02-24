@@ -12,7 +12,7 @@
     <% end %>
       <% current_practice.signups.each do |signup| %>
         <% if signup.player != nil %>
-          <%= signup.player.email %>
+          <%= signup.player.first_name %> <%= signup.player.last_name%>
         <% end %>
         <br />
       <% end %>

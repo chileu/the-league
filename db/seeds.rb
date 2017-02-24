@@ -16,12 +16,3 @@ YAML.load(ENV["PLAYERS_ON_ROSTER"]).each do |player|
       new_player.save!
     end
 end
-
-# password = ENV["PASSWORD"]
-#
-# players_on_roster.each do |player|
-#   first_name = player[0].split.first
-#   last_name = player[0].split.last
-#   email = player[1]
-#   Player.create!(first_name: first_name, last_name: last_name, email: email, password: password)
-# end
