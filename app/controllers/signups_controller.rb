@@ -2,6 +2,7 @@ class SignupsController < ApplicationController
   before_action :authenticate_player!
 
   def create
+    # params[:practice_id] works but not params[:player_id]
     if params[:player_id]
       @signup = selected_player.signups.create(practice: current_practice)
     else
@@ -9,11 +10,6 @@ class SignupsController < ApplicationController
     end
     redirect_to practice_path(current_practice)
   end
-
-  # def create_signup_for_another_player
-  #   @signup = selected_player.signups.create(practice: current_practice)
-  #   redirect_to practice_path(current_practice)
-  # end
 
   def cancel
     @signup = Signup.find(params[:id])
