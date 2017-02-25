@@ -1,20 +1,24 @@
 <br /><br />
-<div class="col-xs-10 col-xs-offset-2 pull-left">
-  <h3><%= link_to '< Back', :back %></h3>
-</div>
-<div class="col-xs-10 col-xs-offset-1 text-center">
-  <h1>Who's going?</h1>
-  <h3><%=current_practice.date.strftime("%A, %B %d") %> practice @ <%=current_practice.time.strftime("%I %p").sub(/^[0:]*/,"")%></h3>
-  <br /><br />
-  <h3>
-    <% if current_practice.signups.count == 0 %>
-      <i>No one is signed up yet!</i>
-    <% end %>
-      <% current_practice.signups.each do |signup| %>
-        <% if signup.player != nil %>
-          <%= signup.player.first_name %> <%= signup.player.last_name%>
+<div class="booyah-box col-xs-8 col-xs-offset-2">
+  <div class="col-xs-10 col-xs-offset-1 pull-left">
+
+    <h3><%= link_to '< Back', :back %></h3>
+  </div>
+  <div class="col-xs-10 col-xs-offset-1 text-center">
+    <h1>Who's going?</h1>
+    <h3><%=current_practice.date.strftime("%A, %B %d") %> practice @ <%=current_practice.time.strftime("%I %p").sub(/^[0:]*/,"")%></h3>
+    <br /><br />
+    <h3>
+      <% if current_practice.signups.count == 0 %>
+        <i>No one is signed up yet!</i>
+      <% end %>
+        <% current_practice.signups.each do |signup| %>
+          <% if signup.player != nil %>
+            <%= signup.player.first_name %> <%= signup.player.last_name%>
+          <% end %>
+          <br />
         <% end %>
         <br />
-      <% end %>
-  </h3>
+    </h3>
+  </div>
 </div>

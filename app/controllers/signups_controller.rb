@@ -2,7 +2,6 @@ class SignupsController < ApplicationController
   before_action :authenticate_player!
 
   def create
-    # params[:practice_id] works but not params[:player_id]
     if params[:player_id]
       @signup = selected_player.signups.create(practice: current_practice)
     else
