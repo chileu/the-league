@@ -1,18 +1,35 @@
 <br /><br />
+
+<% practice_id = 0 %>
+<% player_id = 0 %>
+
 <div class="booyah-box col-xs-10 col-xs-offset-1 text-center">
   <h1>Add player to practice</h1>
   <br /><br />
 
   <h3>Select a player:</h3>
   <br />
-  <%= select_tag(:player_id, options_for_select(@player_options), prompt: "Players") %>
+  <%= select_tag(:player_id, options_for_select(@player_options), prompt: "Players", class: "player-select") %>
   <br /><br /><br />
 
   <h3>Select a practice date:</h3>
   <br />
-  <%= select_tag(:practice_id, options_for_select(@practice_options), prompt: "Practices") %>
+  <%= select_tag(:practice_id, options_for_select(@practice_options), prompt: "Practices", class: "practice-select") %>
   <br /><br /><br />
 
-
-  <br />
+  <%= link_to 'Submit', practice_signups_path(practice_id: practice_id, player_id: player_id), method: :post, class: "submit-link btn btn-primary btn-lg" %>
+  <br /><br />
 </div>
+
+<!-- http://localhost:3000/captain/practices/17/signups?player_id=80 -->
+
+<script>
+  $(function() {
+    $('.submit-link').on('click', function() {
+      practice_id = $(".practice-select").val();
+      player_id = $(".player-select").val();
+      $(this).attr('href', '/practices/' + practice_id + '/signups');
+      })
+
+  });
+</script>

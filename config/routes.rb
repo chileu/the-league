@@ -12,10 +12,9 @@ Rails.application.routes.draw do
 
   namespace :captain do
     resources :practices, only: [:new, :create] do
-      resources :signups, only: [:new, :create]
       post 'cancel'
     end
-    resources :signups, only: [:new, :create]
+    resources :signups, only: [:new]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
