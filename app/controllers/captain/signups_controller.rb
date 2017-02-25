@@ -2,8 +2,10 @@ class Captain::SignupsController < ApplicationController
 
   # grab all players in database (populated from seed data)
   def new
-    @players = Player.all
+    # @players = Player.all
+    @player_options = Player.all.map{ |p| ["#{p.first_name} #{p.last_name}", p.id] }
     @practices = Practice.where(cancelled: false).order('date ASC')
+    @signup = Signup.new
   end
 
   # allow captain to signup selected player

@@ -5,23 +5,19 @@
 
   <h3>Select a player:</h3>
   <br />
-  <select name="player">
-    <%= @players.each do |player| %>
-      <option value="<%=player%>"><%= player.first_name %> <%= player.last_name %></option>
-    <% end %>
-  </select>
+  <%= select_tag(:player_id, options_for_select(@player_options)) %>
+
   <br /><br /><br />
 
   <h3>Select a practice date:</h3>
   <br />
-  <select name="practice">
+  <select name="practice_id">
     <%= @practices.each do |practice| %>
-      <option value="<%=practice%>"><%= practice.date.strftime("%A %B %d") %></option>
+      <option value="<%=practice.id%>"><%= practice.date.strftime("%A %B %d") %></option>
     <% end %>
   </select>
   <br /><br /><br />
 
-  
-  <br /><br />
 
+  <br />
 </div>
