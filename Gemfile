@@ -44,3 +44,10 @@ gem 'simple_form'
 gem 'devise', '>=3.2.4'
 gem 'jquery-ui-rails'
 gem 'figaro'
+
+group :development do
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-doc'
+  gem 'pry-nav'
+end

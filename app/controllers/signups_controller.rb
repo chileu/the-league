@@ -25,7 +25,7 @@ class SignupsController < ApplicationController
 
   private
 
-  helper_method :current_practice
+  helper_method :current_practice, :selected_player
   def current_practice
     @current_practice = Practice.find(params[:practice_id])
   end
