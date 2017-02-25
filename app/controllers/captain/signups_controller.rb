@@ -3,7 +3,7 @@ class Captain::SignupsController < ApplicationController
   # grab all players in database (populated from seed data)
   def new
     # @players = Player.all
-    @player_options = Player.all.map{ |p| ["#{p.first_name} #{p.last_name}", p.id] }
+    @player_options = Player.all.order('first_name ASC').map{ |p| ["#{p.first_name} #{p.last_name}", p.id] }
     @practice_options = Practice.where(cancelled: false).order('date ASC').map{ |p| [p.date.strftime("%A %B %d"), p.id] }
     @signup = Signup.new
   end
