@@ -4,7 +4,7 @@ class Captain::SignupsController < ApplicationController
   def new
     # @players = Player.all
     @player_options = Player.all.map{ |p| ["#{p.first_name} #{p.last_name}", p.id] }
-    @practices = Practice.where(cancelled: false).order('date ASC')
+    @practice_options = Practice.where(cancelled: false).order('date ASC').map{ |p| [p.date.strftime("%A %B %d"), p.id] }
     @signup = Signup.new
   end
 
