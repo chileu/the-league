@@ -3,11 +3,17 @@ class SignupsController < ApplicationController
 
   def create
     if params[:player_id]
-      @signup = selected_player.signups.create(practice: current_practice)
+      if selected_player.signed_up?(current_practice) == false
+        @signup = selected_player.signups.create(practice: current_practice)
+        redirect_to practice_path(current_practice)
+      else
+        flash[:alert] = "This player is already signed up for #{current_practice.date.strftime("%A %B %d")}"
+        redirect_to new_captain_signup_path
+      end
     else
       @signup = current_player.signups.create(practice: current_practice)
+      redirect_to practice_path(current_practice)
     end
-    redirect_to practice_path(current_practice)
   end
 
   def cancel
