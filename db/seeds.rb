@@ -7,12 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 YAML.load(ENV["PLAYERS_ON_ROSTER"]).each do |player|
-    new_player = Player.find_or_create_by(email: player[1],
-                                first_name: player[0].split.first,
-                                last_name: player[0].split.last,
-                                password: ENV["PASSWORD"])
-    if new_player.first_name == "Chi-Ying" || new_player.last_name == "Xu"
-      new_player.captain = true
-      new_player.save!
+    if Player.find_by(email: player[1]) == nil
+      new_player = Player.create!(email: player[1],
+                                  first_name: player[0].split.first,
+                                  last_name: player[0].split.last,
+                                  password: ENV["PASSWORD"])
+      if new_player.first_name == "Chi-Ying" || new_player.last_name == "Xu"
+        new_player.captain = true
+        new_player.save!
+      end
     end
 end
