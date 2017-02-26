@@ -2,14 +2,17 @@ class SignupsController < ApplicationController
   before_action :authenticate_player!
 
   def create
+    # if signing up for another player
     if params[:player_id]
-      if selected_player.signed_up?(current_practice) == false
-        @signup = selected_player.signups.create(practice: current_practice)
-        redirect_to practice_path(current_practice)
-      else
+      # check if player is already signed up
+      if selected_player.signed_up?(current_practice)
         flash[:alert] = "This player is already signed up for #{current_practice.date.strftime("%A %B %d")}"
         redirect_to new_captain_signup_path
+      else
+        @signup = selected_player.signups.create(practice: current_practice)
+        redirect_to practice_path(current_practice)
       end
+    # if signing up for self
     else
       @signup = current_player.signups.create(practice: current_practice)
       redirect_to practice_path(current_practice)
