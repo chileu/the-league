@@ -3,5 +3,5 @@ class Signup < ActiveRecord::Base
   belongs_to :practice
   # belongs_to :match
 
-  validates :player_id, presence: true
+  validates :player_id, :practice_id, length: { minimum: 1 }
 end

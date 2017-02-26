@@ -22,7 +22,7 @@
               <br />
               <%= link_to 'Cancel my signup', signup_cancel_path(current_players_signup, id: current_players_signup.id), method: :post, class: "btn btn-warning btn-outline" %>
             <% else %>
-              <%= link_to 'Signup', practice_signups_path(practice), method: :post, class: "btn btn-info btn-outline" %>
+              <%= link_to 'Signup', practice_signups_path(practice, player_id: current_player.id), method: :post, class: "btn btn-info btn-outline" %>
             <% end %>
 
             &nbsp;&nbsp;
