@@ -5,21 +5,21 @@
     <% if current_player.captain == true %>
       <%= link_to 'Add a practice', new_captain_practice_path, class: "btn btn-info btn-outline" %>
     <% end %>
-  <br /><br />
+  <br /><br /><br />
 </div>
 <br /><br />
 
 <% @practices.each do |practice| %>
     <% if practice.date != nil && practice.time != nil && practice.cancelled != true %>
         <div class="booyah-box col-xs-6 col-xs-offset-3 text-center">
-          <%= link_to practice.date.strftime("%A, %B %d"), practice_path(practice) %>
+          <h3><%= link_to practice.date.strftime("%A, %B %d"), practice_path(practice) %></h3>
+            <h4><%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %></h4>
             <br />
-            <%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %>
-            <br /><br />
 
             <% if current_player.signed_up?(practice) %>
               <% current_players_signup = practice.signups.find_by(player_id: current_player.id) %>
               <div><b>You are signed up!</b></div>
+              <br />
               <%= link_to 'Cancel my signup', signup_cancel_path(current_players_signup, id: current_players_signup.id), method: :post, class: "btn btn-warning btn-outline" %>
             <% else %>
               <%= link_to 'Signup', practice_signups_path(practice), method: :post, class: "btn btn-info btn-outline" %>
