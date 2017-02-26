@@ -2,17 +2,18 @@ class SignupsController < ApplicationController
   before_action :authenticate_player!
 
   def create
-    # check if player is already signed up
-    if selected_player.signed_up?(current_practice)
-      flash[:alert] = "This player is already signed up for #{current_practice.date.strftime("%A %B %d")}"
-      redirect_to new_captain_signup_path
-    else
-      @signup = selected_player.signups.create(practice: current_practice)
-      if @signup.valid?
-        redirect_to practice_path(current_practice)
+    if !params[:player_id].blank? && !params[:practice_id].blank?
+      # check if player is already signed up
+      if selected_player.signed_up?(current_practice)
+        flash[:alert] = "This player is already signed up for #{current_practice.date.strftime("%A %B %d")}"
+        redirect_to new_captain_signup_path
       else
-        render :new, status: :unprocessable_entity
+        @signup = selected_player.signups.create(practice: current_practice)
+        redirect_to practice_path(current_practice)
       end
+    else
+      flash[:alert] = "Please select a player and a practice date"
+      redirect_to new_captain_signup_path
     end
   end
 
