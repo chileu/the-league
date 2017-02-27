@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :players
+  devise_for :players, controllers: {
+    sessions: 'players/sessions'
+  }
+
   root 'static_pages#index'
 
   resources :practices, only: [:index, :show] do
