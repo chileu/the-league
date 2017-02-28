@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :players, controllers: {
-    sessions: 'players/sessions'
+    password: 'players/password'
   }
 
   root 'static_pages#index'

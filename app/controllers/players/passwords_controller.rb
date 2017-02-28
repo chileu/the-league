@@ -1,4 +1,5 @@
 class Players::PasswordsController < Devise::PasswordsController
+
   # GET /resource/password/new
   # def new
   #   super
@@ -11,12 +12,18 @@ class Players::PasswordsController < Devise::PasswordsController
 
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit
-  #   super
+  #   @player = current_player
   # end
 
   # PUT /resource/password
   # def update
-  #   super
+  #   if current_user.update_with_password(user_params)
+  #     flash[:notice] = "Password updated successfully."
+  #     redirect_to root_path
+  #   else
+  #     flash[:alert] = "There was a problem, please try again."
+  #     render :edit
+  #   end
   # end
 
   # protected
