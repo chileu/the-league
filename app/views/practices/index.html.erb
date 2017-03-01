@@ -1,16 +1,22 @@
 <br /><br />
-<div class="col-xs-8 col-xs-offset-2 text-center">
-  <h1>Practice schedule</h1>
-  <br />
-    <% if current_player.captain == true %>
-      <%= link_to 'Add a practice', new_captain_practice_path, class: "btn btn-info btn-outline" %>
-    <% end %>
-  <br /><br /><br />
-</div>
-<br /><br />
+
+  <div class="col-xs-8 col-xs-offset-2 text-center">
+    <h1>Practice schedule</h1>
+    <br />
+
+      <% if current_player.captain == true %>
+        <%= link_to 'Add a practice', new_captain_practice_path, class: "btn btn-info btn-outline" %>
+      <% end %>
+    <br /><br /><br />
+  </div>
+  <br /><br />
 
 <% @practices.each do |practice| %>
     <% if practice.date != nil && practice.time != nil && practice.cancelled != true %>
+
+    <% practice_date_time = (practice.date.to_s + " " + practice.time.to_s).to_datetime %>
+
+    <% if Time.now.to_datetime < practice_date_time %>
         <div class="booyah-box col-xs-6 col-xs-offset-3 text-center">
           <h3><%= link_to practice.date.strftime("%A, %B %d"), practice_path(practice) %></h3>
             <h4><%= practice.time.strftime("%I %p").sub(/^[0:]*/,"") %></h4>
@@ -20,9 +26,21 @@
               <% current_players_signup = practice.signups.find_by(player_id: current_player.id) %>
               <div><b>You are signed up!</b></div>
               <br />
-              <%= link_to 'Cancel my signup', signup_cancel_path(current_players_signup, id: current_players_signup.id), method: :post, class: "btn btn-warning btn-outline" %>
+
+              <% if Time.now.to_datetime < practice_date_time-36.hour %>
+                <%= link_to 'Cancel my signup', signup_cancel_path(current_players_signup, id: current_players_signup.id), method: :post, class: "btn btn-warning btn-outline" %>
+              <% end %>
+
             <% else %>
-              <%= link_to 'Signup', practice_signups_path(practice, player_id: current_player.id), method: :post, class: "btn btn-info btn-outline" %>
+
+              <% if Time.now.to_datetime < practice_date_time-36.hour %>
+                <%= link_to 'Signup', practice_signups_path(practice, player_id: current_player.id), method: :post, class: "btn btn-info btn-outline" %>
+              <% else %>
+                <% if current_player.first_name != "Chi-Ying" %>
+                  <div><b>Please contact your team captain if you want to sign up for this practice!</b></div>
+                <% end %>
+              <% end %>
+
             <% end %>
 
             &nbsp;&nbsp;
@@ -31,6 +49,9 @@
               &nbsp;&nbsp;
               <%= link_to 'Delete practice', captain_practice_cancel_path(practice, id: practice.id), method: :post, class: "btn btn-danger btn-outline" %>
             <% end %>
+
+
         </div>
+    <% end %>
     <% end %>
 <% end %>
