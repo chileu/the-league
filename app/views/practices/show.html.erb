@@ -15,8 +15,8 @@
         <% current_practice.signups.each do |signup| %>
           <% if signup.player != nil %>
             <%= signup.player.first_name %> <%= signup.player.last_name%>
+            <br />
           <% end %>
-          <br />
         <% end %>
         <br />
     </h3>
