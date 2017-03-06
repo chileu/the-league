@@ -5,6 +5,7 @@ class Captain::SignupsController < ApplicationController
     @player_options = Player.all.order('first_name ASC').map{ |p| ["#{p.first_name} #{p.last_name}", p.id] }
     @practice_options = Practice.where(cancelled: false).order('date ASC').map{ |p| [p.date.strftime("%A %B %d"), p.id] }
   end
+  
   private
 
   helper_method :current_practice, :selected_player
