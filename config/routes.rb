@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   devise_for :players, controllers: {
-    password: 'players/password'
+    password: 'players/password',
+    index: 'players/index'
   }
 
   root 'static_pages#index'
 
+  resources :players, only: [:index]
+  
   resources :practices, only: [:index, :show] do
     resources :signups, only: [:create]
   end
