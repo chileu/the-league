@@ -16,15 +16,12 @@
   <% @player.signed_up_practices.each do |practice| %>
     <% if practice.date < Time.now %>
       <h3><%= practice.date.strftime("%A, %B %d") %></h3>
-    <% end %>
-
-    <br /><br /><br /><br />
-    <div><h3><u>Future practice sign-ups:</u></h3></div>
-    <br />
-    <% if practice.date > Time.now %>
+    <% elsif practice.date > Time.now %>
+      <br /><br /><br /><br />
+      <div><h3><u>Future practice sign-ups:</u></h3></div>
+      <br />
       <h3><%= practice.date.strftime("%A, %B %d") %></h3>
     <% end %>
-
   <% end %>
 
 </div>
