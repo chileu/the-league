@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :players, only: [:index, :show]
 
+  resources :matches, only: [:index]
+
   resources :practices, only: [:index, :show] do
     resources :signups, only: [:create]
   end
