@@ -12,7 +12,7 @@ YAML.load(ENV["PLAYERS_ON_ROSTER"]).each do |player|
                                   first_name: player[0].split.first,
                                   last_name: player[0].split.last,
                                   password: ENV["PASSWORD"])
-      if new_player.first_name == "Chi-Ying" || new_player.last_name == "Xu"
+      if new_player.first_name == "Chi-Ying"
         new_player.captain = true
         new_player.save!
       end
