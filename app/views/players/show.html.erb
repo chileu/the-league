@@ -1,0 +1,32 @@
+<br /><br />
+
+<div class="col-xs-12 col-xs-offset-2 pull-left">
+  <h3><%= link_to '< Back', :back %></h3>
+</div>
+
+<div class="col-xs-12 text-center">
+  <h1><%= @player.first_name %> <%= @player.last_name %></h1>
+  <br /><br /><br />
+  <div><h3><u>Practices attended:</u></h3></div>
+  <br />
+  <% if @player.signed_up_practices.count == 0 %>
+    <h3><i>Player has not attended any practices yet!</i></h3>
+  <% end %>
+
+  <% @player.signed_up_practices.each do |practice| %>
+    <% if practice.date < Time.now && practice.count != 0 %>
+      <h3><%= practice.date.strftime("%A, %B %d") %></h3>
+    <% else %>
+      <h3><i>Player has not attended any practices yet!</i></h3>
+    <% end %>
+
+    <br /><br /><br /><br />
+    <div><h3><u>Future practice sign-ups:</u></h3></div>
+    <br />
+    <% if practice.date > Time.now %>
+      <h3><%= practice.date.strftime("%A, %B %d") %></h3>
+    <% end %>
+
+  <% end %>
+
+</div>

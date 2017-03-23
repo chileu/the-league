@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
-  resources :players, only: [:index]
-  
+  resources :players, only: [:index, :show]
+
   resources :practices, only: [:index, :show] do
     resources :signups, only: [:create]
   end
