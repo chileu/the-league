@@ -14,10 +14,8 @@
   <% end %>
 
   <% @player.signed_up_practices.each do |practice| %>
-    <% if practice.date < Time.now && practice != nil %>
+    <% if practice.date < Time.now %>
       <h3><%= practice.date.strftime("%A, %B %d") %></h3>
-    <% else%>
-      <h3><i>Player has not attended any practices yet!</i></h3>
     <% end %>
 
     <br /><br /><br /><br />
