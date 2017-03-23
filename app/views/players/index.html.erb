@@ -17,7 +17,7 @@
         </div>
         <div class="col-xs-1 pull-right">
           <%= link_to player_path(player), class: 'no-link' do %>
-            <div><h3><%= player.signed_up_practices.count %></h3></div>
+            <div><h3><%= player.signed_up_practices.where("date < ?", Time.now).count %></h3></div>
           <% end %>
         </div>
         <hr />
