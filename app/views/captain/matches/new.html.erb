@@ -1,0 +1,52 @@
+<% places = ["Westside Tennis Club", "Roosevelt Island", "Manhattan Plaza", "National Tennis Center", "CityView Racquet Club", "Randall's Island"] %>
+<% home_or_away = ["Home", "Away"] %>
+
+<br /><br /><br /><br />
+<div class="booyah-box col-xs-6 col-xs-offset-3 text-center">
+  <h1>Add a new match</h1>
+  <%= simple_form_for @match, url: captain_matches_path do |f| %>
+    <br />
+
+    <span class="col-xs-1 col-xs-offset-3">
+      <%= f.label :date %>
+    </span>
+    <span class="col-xs-4">
+      <%= f.text_field :date %>
+    </span>
+    <br /><br />
+
+    <span class="col-xs-1 col-xs-offset-3">
+      <%= f.label :time %>
+    </span>
+    <span class="col-xs-4">
+      <%= f.time_select :time, {minute_step: 30, ampm: true} %>
+    </span>
+    <br /><br />
+
+    <span class="col-xs-1 col-xs-offset-3">
+      <%= f.label :place %>
+    </span>
+    <span class="col-xs-4">
+      <%= f.input :place, label: false, collection: places %>
+    </span>
+    <br /><br />
+
+    <span class="col-xs-1 col-xs-offset-3">
+      <%= f.label :Team %>
+    </span>
+    <span class="col-xs-4">
+      <%= f.input :home_or_away, label: false, prompt: "Home or Away", collection: home_or_away %>
+    </span>
+    <br /><br />
+
+    <%= f.submit "Add", class: "btn btn-primary btn-lg" %>
+  <% end %>
+</div>
+
+<script>
+  $(function() {
+    $("#match_date").datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+  });
+</script>

@@ -1,6 +1,19 @@
 <br /><br />
-<div class="col-xs-6 col-xs-offset-3 text-center">
+<div class="col-xs-8 col-xs-offset-2 text-center">
   <h1>Match schedule</h1>
+  <br /><br />
+
+  <% if current_player.captain == true %>
+    <%= link_to 'Add match', new_captain_match_path, class: "btn btn-info btn-outline" %>
+  <% end %>
   <br /><br /><br />
-  <h1><i>Coming soon...</i></h1>
 </div>
+
+<% @matches.each do |match| %>
+    <div class="booyah-box col-xs-6 col-xs-offset-3 text-center">
+      <h3><%= match.date.strftime("%A, %B %d") %></h3>
+      <h3><%= match.time.strftime("%I:%M %p").sub(/[0]/,"") %></h3>
+      <h3><i><%= match.place %></i></h3>
+      <h4><%= match.home_or_away %> Team</h4>
+    </div>
+<% end %>
