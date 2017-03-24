@@ -5,15 +5,21 @@
 
   <% if current_player.captain == true %>
     <%= link_to 'Add match', new_captain_match_path, class: "btn btn-info btn-outline" %>
+    <br /><br /><br />
   <% end %>
-  <br /><br /><br />
 </div>
 
 <% @matches.each do |match| %>
     <div class="booyah-box col-xs-6 col-xs-offset-3 text-center">
-      <h3><%= match.date.strftime("%A, %B %d") %> @ <%= match.time.strftime("%I:%M %p").sub(/[0]/,"") %></h3>
-      <h4><i>versus Team #<%= match.opponent %></i></h4>
-      <h3><i><%= match.place %></i></h3>
-      <h4><%= match.home_or_away %> Team </h4>
+      <% if current_player.captain == true %>
+        <%= link_to edit_captain_match_path(match) do %>
+          <h3><%= match.date.strftime("%A, %B %d") %> @ <%= match.time.strftime("%I:%M %p").sub(/[0]/,"") %></h3>
+        <% end %>
+      <% else %>
+        <h3><%= match.date.strftime("%A, %B %d") %> @ <%= match.time.strftime("%I:%M %p").sub(/[0]/,"") %></h3>
+      <% end %>
+        <h4><i>versus Team #<%= match.opponent %></i></h4>
+        <h3><i><%= match.place %></i></h3>
+        <h4><%= match.home_or_away %> Team </h4>
     </div>
 <% end %>

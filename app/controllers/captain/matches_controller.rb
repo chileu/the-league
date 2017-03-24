@@ -15,9 +15,17 @@ class Captain::MatchesController < ApplicationController
   end
 
   def edit
+    @match = Match.find(params[:id])
   end
 
   def update
+    @match = Match.find(params[:id])
+    @match.update_attributes(match_params)
+    if @match.valid?
+      redirect_to matches_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
