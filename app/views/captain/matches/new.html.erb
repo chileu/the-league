@@ -1,5 +1,6 @@
 <% places = ["Westside Tennis Club", "Roosevelt Island", "Manhattan Plaza", "National Tennis Center", "CityView Racquet Club", "Randall's Island"] %>
 <% home_or_away = ["Home", "Away"] %>
+<% opponent = ["1: Caress", "2: Funfgeld/Bussey", "3: Philis/Doomany", "4: Fantera/Brennan", "5: Moukad", "7: Litz/Abey"] %>
 
 <br /><br /><br /><br />
 <div class="booyah-box col-xs-6 col-xs-offset-3 text-center">
@@ -7,7 +8,7 @@
   <%= simple_form_for @match, url: captain_matches_path do |f| %>
     <br />
 
-    <span class="col-xs-1 col-xs-offset-3">
+    <span class="col-xs-2 col-xs-offset-3">
       <%= f.label :date %>
     </span>
     <span class="col-xs-4">
@@ -15,7 +16,7 @@
     </span>
     <br /><br />
 
-    <span class="col-xs-1 col-xs-offset-3">
+    <span class="col-xs-2 col-xs-offset-3">
       <%= f.label :time %>
     </span>
     <span class="col-xs-4">
@@ -23,7 +24,7 @@
     </span>
     <br /><br />
 
-    <span class="col-xs-1 col-xs-offset-3">
+    <span class="col-xs-2 col-xs-offset-3">
       <%= f.label :place %>
     </span>
     <span class="col-xs-4">
@@ -31,13 +32,21 @@
     </span>
     <br /><br />
 
-    <span class="col-xs-1 col-xs-offset-3">
+    <span class="col-xs-2 col-xs-offset-3">
       <%= f.label :Team %>
     </span>
     <span class="col-xs-4">
       <%= f.input :home_or_away, label: false, prompt: "Home or Away", collection: home_or_away %>
     </span>
     <br /><br />
+
+    <span class="col-xs-2 col-xs-offset-3">
+      <%= f.label :Opponent %>
+    </span>
+    <span class="col-xs-4">
+      <%= f.input :opponent, label: false, collection: opponent %>
+    </span>
+    <br /><br /><br />
 
     <%= f.submit "Add", class: "btn btn-primary btn-lg" %>
   <% end %>

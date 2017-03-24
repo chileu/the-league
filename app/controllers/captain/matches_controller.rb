@@ -10,10 +10,19 @@ class Captain::MatchesController < ApplicationController
     redirect_to matches_path
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
 private
 
 def match_params
-  params.require(:match).permit(:date, :time, :place, :home_or_away)
+  params.require(:match).permit(:date, :time, :place, :home_or_away, :opponent)
 end
 
 

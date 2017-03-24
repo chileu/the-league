@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323012928) do
+ActiveRecord::Schema.define(version: 20170324215617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170323012928) do
     t.boolean  "cancelled",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "opponent"
   end
 
   create_table "players", force: true do |t|

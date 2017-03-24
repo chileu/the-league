@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :practices, only: [:new, :create] do
       post 'cancel'
     end
-    resources :matches, only: [:new, :create]
+    resources :matches, only: [:new, :create, :edit, :update, :destroy]
     resources :signups, only: [:new]
   end
   # The priority is based upon order of creation: first created -> highest priority.
