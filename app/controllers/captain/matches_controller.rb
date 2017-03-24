@@ -7,7 +7,11 @@ class Captain::MatchesController < ApplicationController
 
   def create
     @match = Match.create(match_params)
-    redirect_to matches_path
+    if @match.valid?
+      redirect_to matches_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
